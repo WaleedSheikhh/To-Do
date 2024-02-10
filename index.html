@@ -99,6 +99,11 @@
             border-radius: 8px;
             outline: 0;
         }
+
+        .fa-square-check {
+          margin-right: 10px;
+          cursor: pointer;
+        }
     </style>
   </head>
 
@@ -124,6 +129,7 @@
       const enterValue = document.querySelector(".taskSec button");
       const searchValue = document.querySelector(".searchFn input");
       const tasksOutput = document.querySelector(".tasks_Output");
+      const checkBox = document.querySelector(".fa-square-check");
 
       function addTask() {
         if (taskValue.value === " ") {
@@ -131,16 +137,22 @@
         } else {
           let newTask = document.createElement("p");
           // newTask.innerHTML = ` <input type="checkbox" class="taskCheckbox"> <span>${taskValue.value}</span> <i class="fa-regular fa-trash-can"></i>`
-          newTask.innerHTML = `<span class="taskText">${taskValue.value}</span> <i class="fa-regular fa-trash-can"></i>`;
+          newTask.innerHTML = `<span class="taskText"><i class="fa-regular fa-square-check"></i>  ${taskValue.value}</span> <i class="fa-regular fa-trash-can"></i>`;
+
+          taskValue.value = " ";
 
           tasksOutput.appendChild(newTask);
-          taskValue.value = " ";
 
           let deleteTask = newTask.querySelector(".fa-trash-can");
           deleteTask.addEventListener("click", () => {
             newTask.remove();
           });
         }
+
+        checkBox.addEventListener('click', function(){
+          let taskText = document.querySelector(".taskText");
+          taskText.style.textDecoration = 'line-through';
+        })
 
         searchValue.addEventListener("input", function (e) {
           const searchInput = e.target.value.toLowerCase();
@@ -156,18 +168,7 @@
           });
         });
 
-        // const taskCheckbox = newTask.querySelector(".taskCheckbox");
-        // taskCheckbox.addEventListener('change', function () {
-        //     if (taskCheckbox.checked) {
-        //         newTask.querySelector("span").classList.add("completed");
-        //     } else {
-        //         newTask.querySelector("span").classList.remove("completed");
-        //     }
-        // });
-
-        //     newTask.addEventListener('click', function(){
-        //     newTask.style.textDecoration = 'line-through'
-        // })
+        
       }
 
       enterValue.addEventListener("click", addTask);
