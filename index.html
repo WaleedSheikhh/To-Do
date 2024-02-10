@@ -22,7 +22,7 @@
             width: auto;
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(rgb(221, 221, 221), rgb(233, 233, 233));
+            background: linear-gradient(rgb(243, 243, 243), rgb(233, 233, 233));
             background-repeat: no-repeat;
         }
 
@@ -33,22 +33,19 @@
             padding: 20px;
         }
 
-        /* .completed {
-            text-decoration: line-through;
-            color: gray;
-        } */
-
         .taskSec {
-            border: 0.2px solid lightcyan;
+            border: 0.2px solid rgb(255, 255, 255);
+            border-radius: 8px;
             padding: 20px;
+            margin: 10px;
         }
 
         .taskSec input {
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: 0;
             border-radius: 8px;
             outline: 0;
-            width: 90vw;
+            width: 50vw;
         }
 
         .taskSec button {
@@ -64,14 +61,15 @@
 
         .searchFn {
             padding: 20px;
+            margin: 10px;
         }
 
         .searchFn input {
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: 0;
             border-radius: 8px;
             outline: 0;
-            width: 30vw;
+            width: 25vw;
         }
 
         .tasks_Output {
@@ -88,6 +86,8 @@
             outline: 0;
             width: 100vw;
             margin-right: 10px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .fa-trash-can {
@@ -98,10 +98,20 @@
             border: 0;
             border-radius: 8px;
             outline: 0;
+            cursor: pointer;
         }
 
         .fa-square-check {
           margin-right: 10px;
+          cursor: pointer;
+        }
+
+        .fa-gear {
+          margin-right: 10px;
+          cursor: pointer;
+        }
+
+        nav h5 {
           cursor: pointer;
         }
     </style>
@@ -111,7 +121,7 @@
 
     <nav>
         <h2>To-Do</h2>
-        <h4><i class="fa-solid fa-gear"></i>Settings</h4>
+        <h5><i class="fa-solid fa-gear"></i>Settings</h5>
     </nav>
 
     <div class="taskSec">
@@ -148,11 +158,6 @@
             newTask.remove();
           });
         }
-
-        checkBox.addEventListener('click', function(){
-          let taskText = document.querySelector(".taskText");
-          taskText.style.textDecoration = 'line-through';
-        })
 
         searchValue.addEventListener("input", function (e) {
           const searchInput = e.target.value.toLowerCase();
