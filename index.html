@@ -11,171 +11,225 @@
       referrerpolicy="no-referrer"
     />
     <title>To-Do app</title>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            width: auto;
-            height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(rgb(243, 243, 243), rgb(233, 233, 233));
-            background-repeat: no-repeat;
-        }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(rgb(243, 243, 243), rgb(233, 233, 233));
+        background-repeat: no-repeat;
+        height: 100vh;
+      }
 
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-        }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+      }
 
-        .taskSec {
-            border: 0.2px solid rgb(255, 255, 255);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-        }
+      .taskSec {
+        margin: 30px 0 0 20px;
+      }
 
-        .taskSec input {
-            padding: 10px 15px;
-            border: 0;
-            border-radius: 8px;
-            outline: 0;
-            width: 50vw;
-        }
+      .taskSec input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: 0;
+        width: 50vw;
+      }
 
-        .taskSec button {
-            padding: 10px 20px;
-            border: 0;
-            border-radius: 8px;
-            outline: 0;
-            background-color: rgb(66, 101, 255);
-            color: white;
-            font-weight: 500;
-        }
+      .taskSec button {
+        padding: 10px 20px;
+        border: 0;
+        border-radius: 8px;
+        outline: 0;
+        background-color: rgb(66, 101, 255);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
+      .searchFn {
+        margin: 30px 0 0 20px;
+      }
 
-        .searchFn {
-            padding: 20px;
-            margin: 10px;
-        }
+      .searchFn input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: 0;
+        width: 25vw;
+      }
 
-        .searchFn input {
-            padding: 10px 15px;
-            border: 0;
-            border-radius: 8px;
-            outline: 0;
-            width: 25vw;
-        }
+      .tasks_Output {
+        padding: 20px;
+        color: #222;
+        line-height: 50px;
+      }
 
-        .tasks_Output {
-            padding: 20px;
-            color: #222;
-            line-height: 60px;
-        }
+      .taskText {
+        padding: 10px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: 0;
+        width: 100%;
+        margin-right: 10px;
+        font-size: 14px;
+        font-weight: 500;
+      }
 
-        .taskText {
-            padding: 10px;
-            background: white;
-            border: 0;
-            border-radius: 8px;
-            outline: 0;
-            width: 100vw;
-            margin-right: 10px;
-            font-size: 14px;
-            font-weight: 500;
-        }
+      .fa-trash-can {
+        padding: 8px;
+        background-color: rgb(66, 101, 255);
+        color: white;
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+      }
 
-        .fa-trash-can {
-            
-            padding: 10px;
-            background-color: rgb(66, 101, 255);
-            color: white;
-            border: 0;
-            border-radius: 8px;
-            outline: 0;
-            cursor: pointer;
-        }
+      .fa-square-check {
+        padding: 8px;
+        color: rgb(25, 98, 255);
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+      }
 
-        .fa-square-check {
-          margin-right: 10px;
-          cursor: pointer;
-        }
+      nav h5 {
+        cursor: pointer;
+      }
 
-        .fa-gear {
-          margin-right: 10px;
-          cursor: pointer;
-        }
+      .taskSec button:hover,
+      .fa-trash-can:hover {
+        background-color: #4472c4;
+      }
 
-        nav h5 {
-          cursor: pointer;
-        }
+      .taskSec button,
+      .fa-trash-can,
+      .fa-square-check {
+        transition: background-color 0.3s ease;
+      }
+
+      .line {
+        margin-top: 30px;
+        width: 100%;
+        height: 0.5px;
+        background: #a1a1a1;
+      }
+
+      .hdTasks {
+        padding: 20px 0 0 20px;
+        color: #333;
+      }
     </style>
   </head>
 
   <body>
-
     <nav>
-        <h2>To-Do</h2>
-        <h5><i class="fa-solid fa-gear"></i>Settings</h5>
+      <h2>To-Do</h2>
     </nav>
 
     <div class="taskSec">
-      <input type="text" placeholder="Add new task" />
+      <input type="text" placeholder="Add new task" id="taskInput" />
       <button>Add</button>
     </div>
 
     <div class="searchFn">
-        <input type="search" placeholder="Search tasks..." />
-      </div>
+      <input
+        type="search"
+        placeholder="&#xF002;   Search task"
+        style="font-family: Arial, FontAwesome"
+      />
+    </div>
+
+    <div class="line"></div>
+    <h3 class="hdTasks">Tasks</h3>
 
     <div class="tasks_Output"></div>
+
+    <!-- <i class="fa-solid fa-square-check id="icon"></i> -->
+
     <script>
+      // Declaring Variables
       const taskValue = document.querySelector(".taskSec input");
       const enterValue = document.querySelector(".taskSec button");
       const searchValue = document.querySelector(".searchFn input");
       const tasksOutput = document.querySelector(".tasks_Output");
-      const checkBox = document.querySelector(".fa-square-check");
+      const taskInput = document.querySelector("#taskInput");
 
+      // Add new task function
       function addTask() {
-        if (taskValue.value === " ") {
+        if (taskValue.value.trim() === "") {
           alert("Please enter a task.");
         } else {
           let newTask = document.createElement("p");
-          // newTask.innerHTML = ` <input type="checkbox" class="taskCheckbox"> <span>${taskValue.value}</span> <i class="fa-regular fa-trash-can"></i>`
-          newTask.innerHTML = `<span class="taskText"><i class="fa-regular fa-square-check"></i>  ${taskValue.value}</span> <i class="fa-regular fa-trash-can"></i>`;
-
-          taskValue.value = " ";
+          newTask.innerHTML = `
+          <span class="taskText"><i class="fa-regular fa-square-check"></i> ${taskValue.value}</span>
+          <i class="fa-regular fa-trash-can"></i>
+        `;
+          taskValue.value = "";
 
           tasksOutput.appendChild(newTask);
 
           let deleteTask = newTask.querySelector(".fa-trash-can");
+          let checkBox = newTask.querySelector(".fa-square-check");
+
+          // Delete task fn
           deleteTask.addEventListener("click", () => {
             newTask.remove();
           });
-        }
 
-        searchValue.addEventListener("input", function (e) {
-          const searchInput = e.target.value.toLowerCase();
-          const tasks = tasksOutput.querySelectorAll("p");
-
-          tasks.forEach((task) => {
-            const taskText = task.querySelector("span").innerText.toLowerCase();
-            if (taskText.includes(searchInput)) {
-              task.style.display = "block";
+          // CheckBox fn
+          checkBox.addEventListener("click", () => {
+            let taskText = newTask.querySelector(".taskText");
+            if (taskText.style.textDecoration === "line-through") {
+              taskText.style.textDecoration = "none";
+              checkBox.classList.remove("fa-solid");
+              checkBox.classList.add("fa-regular");
             } else {
-              task.style.display = "none";
+              taskText.style.textDecoration = "line-through";
+              checkBox.classList.remove("fa-regular");
+              checkBox.classList.add("fa-solid");
             }
           });
-        });
 
-        
+          // Search Value fn
+          searchValue.addEventListener("input", function (e) {
+            const searchInput = e.target.value.toLowerCase();
+            const tasks = tasksOutput.querySelectorAll("p");
+
+            tasks.forEach((task) => {
+              const taskText = task
+                .querySelector("span")
+                .innerText.toLowerCase();
+              if (taskText.includes(searchInput)) {
+                task.style.display = "block";
+              } else {
+                task.style.display = "none";
+              }
+            });
+          });
+        }
       }
 
+      // Press Enter key to add values
+      taskInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          addTask();
+        }
+      });
+
+      // Add button Functionality
       enterValue.addEventListener("click", addTask);
     </script>
   </body>
